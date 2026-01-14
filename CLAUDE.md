@@ -49,7 +49,7 @@
 ssh -i "G:\Oracle-ARM-Server-Docs\new_vm_key.pem" ubuntu@92.5.72.169
 
 # SSH to VM2 (hub)
-ssh -i "G:\Oracle-ARM-Server-Docs\new_vm_key.pem" ubuntu@158.180.56.74
+ssh -i "C:\Users\serge\.ssh\oracle_new" ubuntu@158.180.56.74
 
 # List services
 systemctl list-units --type=service --state=running | grep -E "(grok|todo|hub)"
@@ -92,6 +92,26 @@ sudo systemctl restart SERVICE_NAME
 2. Find large files: `du -sh /* | sort -h`
 3. Clean: logs, tmp, old backups
 4. Never delete user data without asking
+
+## Cross-Reboot System
+
+VM могут перезагружать друг друга через SSH:
+
+```bash
+# VM1 → VM2: с VM1 выполнить
+~/reboot_vm2.sh
+
+# VM2 → VM1: с VM2 выполнить
+~/reboot_vm1.sh
+
+# Health checks
+~/check_vm2.sh   # на VM1 - проверить VM2
+~/check_vm1.sh   # на VM2 - проверить VM1
+```
+
+**SSH Keys для cross-access:**
+- VM1: `~/.ssh/vm2_key` → доступ к VM2
+- VM2: `~/.ssh/vm1_key` → доступ к VM1
 
 ## MCP Integration
 
