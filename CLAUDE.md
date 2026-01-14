@@ -122,6 +122,40 @@ VM могут перезагружать друг друга через SSH:
 - `vm_upload` - загрузка файлов
 - `vm_read_file` / `vm_write_file` - работа с файлами
 
+## Anthropic Mobile Connection
+
+Для доступа с телефона через Anthropic App:
+
+**MCP Endpoint:** `https://mcp-hub-old-frost-2327.fly.dev/mcp`
+
+В Anthropic App:
+1. Settings → Connectors → Add Custom Connector
+2. URL: `https://mcp-hub-old-frost-2327.fly.dev/mcp`
+3. Синхронизируется автоматически
+
+**Доступные команды через мобильный:**
+- `save_note`, `get_notes`, `search_notes` - заметки
+- `add_task`, `get_tasks`, `complete_task` - задачи
+- `get_tools`, `search_tools` - каталог AI инструментов
+
+**VM команды (через Claude Code на компе):**
+- `vm_exec` - выполнить команду
+- `vm_service` - управление сервисами
+- `vm_diagnose` - диагностика
+- `vm_read_file` / `vm_write_file` - файлы
+
+## Auto-Diagnose Scripts
+
+На каждой VM есть скрипт автодиагностики:
+
+```bash
+# Просто проверка
+~/auto_diagnose.sh
+
+# Проверка + автоисправление
+~/auto_diagnose.sh --fix
+```
+
 ## Response Format
 
 При работе с VM всегда показывай:
