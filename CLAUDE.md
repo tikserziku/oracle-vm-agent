@@ -115,12 +115,37 @@ VM могут перезагружать друг друга через SSH:
 
 ## MCP Integration
 
-Используй `oracle-dual-vm.js` MCP сервер для SSH операций:
-- `vm_exec` - выполнить команду
-- `vm_service` - управление сервисами
+### Oracle Agent API (oracle-agent-api.js)
+
+HTTP API на VM2 (порт 8080) для управления обеими VM:
+
+```
+Fly.io MCP → http://158.180.56.74:8080/agent/* → VM1/VM2
+```
+
+**Endpoints:**
+- `POST /agent/exec` - выполнить команду
+- `GET /agent/logs/:vm/:service` - получить логи
+- `GET /agent/diagnose/:vm` - диагностика
+- `GET /agent/resources/:vm` - проверка ресурсов
+- `POST /agent/deploy` - деплой кода
+- `POST /agent/fix` - автоисправление
+- `GET /agent/services/:vm` - список сервисов
+- `POST /agent/reboot/:target` - перезагрузка
+
+**API Key:** `oracle-agent-2026` (header `X-API-Key`)
+
+### MCP Tools (24)
+
+**VM Management:**
+- `vm_exec` - выполнить команду на VM
+- `vm_logs` - логи сервиса
 - `vm_diagnose` - полная диагностика
-- `vm_upload` - загрузка файлов
-- `vm_read_file` / `vm_write_file` - работа с файлами
+- `vm_resources` - проверка ресурсов (диск/память/load)
+- `vm_deploy` - деплой с проверкой ресурсов
+- `vm_fix` - автоисправление (до 3 попыток)
+- `vm_services` - список сервисов
+- `vm_reboot` - перезагрузка VM
 
 ## Anthropic Mobile Connection
 
