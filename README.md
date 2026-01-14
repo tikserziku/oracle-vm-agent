@@ -198,6 +198,22 @@ def auto_fix(error):
 
 ---
 
+## 📱 Mobile Access (Anthropic App)
+
+Connect from your phone via Anthropic Android/iOS app:
+
+```
+Settings → Connectors → Add Custom Connector
+URL: https://mcp-hub-old-frost-2327.fly.dev/mcp
+```
+
+**Available mobile commands:**
+- Notes: `save_note`, `get_notes`, `search_notes`
+- Tasks: `add_task`, `get_tasks`, `complete_task`
+- Tools catalog: `get_tools`, `search_tools`
+
+---
+
 ## 🤝 Built With
 
 <p align="center">
